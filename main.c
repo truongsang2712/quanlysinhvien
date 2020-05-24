@@ -15,7 +15,6 @@ void findname(char nam3[100]);
 void findid(int sbd);
 int main()
 {
-
 l1:
     printf("nhập vào số lượng sinh viên tối đa của lớp:\n");
     scanf("%d",&n);
@@ -33,7 +32,6 @@ l1:
     printf("7: nhập lại số lượng sinh viên:\n");
     printf("***********\n");
     while(1) {
-
         printf("\n");
         printf("nhập vào thao tác muốn thực hiện:\n");
         while((choose==0)||(choose>7)) {
@@ -42,17 +40,12 @@ l1:
         if(choose==7) {
             choose=0;
             break;
-
         }
         action(choose);
-
     }
     goto l1;
-
 }
-
 void showall() {
-//printf("danh sách sinh viên:\n");
     for(int i=0; i<n; i++) {
         if(id[i]==0) {
             numdata=i;
@@ -60,10 +53,8 @@ void showall() {
         }
         printf("%12s",name[i]);
         printf("|SBD:%3d|",id[i]);
-
         printf("Điểm tb: %.2f;\n",mean[i]);
     }
-
 }
 void addstudent() {
     int position;
@@ -81,51 +72,33 @@ void addstudent() {
         strcpy(name[m],name[m-1]);
         id[m]=id[m-1];
         mean[m]=mean[m-1];
-
-    }
-   
+    }   
     printf("nhập họ & tên sinh viên:\n");
     getchar();
     fgets(name[position], sizeof name[position], stdin);
-
-    name[position][strlen(name[position])-1] ='\0';
-    //printf("%s",name[numdata]);
+    name[position][strlen(name[position])-1] ='\0';    
     printf("nhập vào SBD: ");
     scanf("%d",&id[position]);
     printf("nhập vào điểm TB:\n");
     scanf("%f", &mean[position]);
-
-
 }
 void deletename(char nam2[100]) {
     int ktra=0;
     int sbd;
     int g;
     int p=0;
-
     for(p=0; p<n; p++) {
-
-        g =strcmp(name[p],nam2);
-        // printf("%d\n",g);
+        g =strcmp(name[p],nam2);       
         if(g==0) {
             ktra=1;
-            sbd=id[p];
-            //    printf("%s\n",name[p]);
-            //  break;
+            sbd=id[p];            
         }
-
-
         if(ktra==1) {
-
             strcpy(name[p],name[p+1]);
             id[p]=id[p+1];
             mean[p]=mean[p+1];
-
         }
     }
-
-
-//}
     if(ktra==0) {
         printf("không tìm thấy tên %s trong danh sách!",nam2);
     }
@@ -139,15 +112,12 @@ void deleteid(int sbd) {
     int g;
     int p=0;
     char tam[100]="";
-
     for(p=0; p<n; p++) {
         if(id[p]==sbd) {
             ktra=1;
             strcpy(tam,name[p]);
         }
-
         if((ktra==1)&&(tam!="")) {
-
             strcpy(name[p],name[p+1]);
             id[p]=id[p+1];
             mean[p]=mean[p+1];
@@ -160,21 +130,16 @@ void deleteid(int sbd) {
         printf("đã xoá thông tin sinh viên: ");
         printf("%s | SBD:  %d\n",tam, sbd);
     }
-
 }
 void findname(char nam[100]){
     int g;
     int p=0;
-
     for(p=0; p<n; p++) {
         g =strcmp(name[p],nam);
         if(g==0) {
             break;
         }
     }
-
-
-//}
     if(p>=n) {
         printf("không tìm thấy tên %s trong danh sách!\n",nam);
     }
@@ -187,7 +152,6 @@ void findid(int sbd){
     int g;
     int p=0;
     char tam[100]="";
-
     for(p=0; p<n; p++) {
         if(id[p]==sbd) {
            break; 
@@ -205,7 +169,6 @@ void action(int chose) {
     case 1: {
         printf("hiển thị danh sách sinh viên:\n");
         showall();
-
         choose=0;
         break;
     }
@@ -255,6 +218,6 @@ void action(int chose) {
         choose=0;
         break;
     }
-    }
+  }
 }
     
